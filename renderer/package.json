@@ -1,0 +1,6 @@
+{
+  "name": "ward-wise-shorts",
+  "private": true,
+  "type": "module",
+  "dependencies": { "playwright": "1.55.0" }
+}

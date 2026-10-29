@@ -1,0 +1,590 @@
+[
+ {
+  "metric_id": "museum_count",
+  "label": "Museums",
+  "confidence": "unrated",
+  "issues": [
+   "21 of 50 wards are zero"
+  ]
+ },
+ {
+  "metric_id": "menu_lighting_share",
+  "label": "Menu $ on lighting",
+  "confidence": "high",
+  "issues": [
+   "25 of 50 wards are zero"
+  ]
+ },
+ {
+  "metric_id": "menu_parks_share",
+  "label": "Menu $ on parks",
+  "confidence": "high",
+  "issues": [
+   "38 of 50 wards are zero"
+  ]
+ },
+ {
+  "metric_id": "menu_cameras_share",
+  "label": "Menu $ on cameras",
+  "confidence": "high",
+  "issues": [
+   "47 of 50 wards are zero",
+   "only 3 distinct values"
+  ]
+ },
+ {
+  "metric_id": "menu_schools_share",
+  "label": "Menu $ on schools",
+  "confidence": "high",
+  "issues": [
+   "46 of 50 wards are zero"
+  ]
+ },
+ {
+  "metric_id": "c311_response_days",
+  "label": "311 Response Time (per report)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_graffiti_days",
+  "label": "Graffiti Removal Time (per report)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_tree_debris_days",
+  "label": "Tree Debris Cleanup Time (per report)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_rodent_days",
+  "label": "Rodent Baiting Time (per report)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_street_light_days",
+  "label": "Street Light Repair Time (per report)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_pothole_days",
+  "label": "Pothole Repair Time (per report)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_garbage_cart_days",
+  "label": "Garbage Cart Service Time (per report)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "licensed_pawnbrokers_per_10000_residents",
+  "label": "Pawnbrokers (licensed)",
+  "confidence": "medium",
+  "issues": [
+   "only 31 wards"
+  ]
+ },
+ {
+  "metric_id": "participatory_budgeting",
+  "label": "Participatory budgeting",
+  "confidence": "high",
+  "issues": [
+   "37 of 50 wards are zero",
+   "only 2 distinct values"
+  ]
+ },
+ {
+  "metric_id": "traffic_crash_injuries_count",
+  "label": "Traffic injuries",
+  "confidence": "high",
+  "issues": [
+   "latest period is the current year to date (partial); use 2025 for a full year"
+  ]
+ },
+ {
+  "metric_id": "pedestrian_cyclist_crashes_count",
+  "label": "Pedestrian & cyclist crashes",
+  "confidence": "high",
+  "issues": [
+   "latest period is the current year to date (partial); use 2025 for a full year"
+  ]
+ },
+ {
+  "metric_id": "new_residential_construction_permits_count",
+  "label": "New Housing Permits",
+  "confidence": "medium",
+  "issues": [
+   "latest period is the current year to date (partial); use 2025 for a full year"
+  ]
+ },
+ {
+  "metric_id": "new_residential_construction_investment_usd",
+  "label": "Housing Construction Investment",
+  "confidence": "medium",
+  "issues": [
+   "latest period is the current year to date (partial); use 2025 for a full year"
+  ]
+ },
+ {
+  "metric_id": "residential_renovation_investment_usd",
+  "label": "Renovation investment",
+  "confidence": "medium",
+  "issues": [
+   "latest period is the current year to date (partial); use 2025 for a full year"
+  ]
+ },
+ {
+  "metric_id": "new_residential_units_permitted_est",
+  "label": "New Homes Permitted (est.)",
+  "confidence": "medium",
+  "issues": [
+   "latest period is the current year to date (partial); use 2025 for a full year"
+  ]
+ },
+ {
+  "metric_id": "residential_renovation_permits_count",
+  "label": "Home Renovation Permits",
+  "confidence": "medium",
+  "issues": [
+   "latest period is the current year to date (partial); use 2025 for a full year"
+  ]
+ },
+ {
+  "metric_id": "demolition_permits_count",
+  "label": "Demolition Permits",
+  "confidence": "medium",
+  "issues": [
+   "latest period is the current year to date (partial); use 2025 for a full year"
+  ]
+ },
+ {
+  "metric_id": "building_permit_processing_days",
+  "label": "Permit Processing Time",
+  "confidence": "medium",
+  "issues": [
+   "latest period is the current year to date (partial); use 2025 for a full year"
+  ]
+ },
+ {
+  "metric_id": "ej_rmp_site_proximity",
+  "label": "RMP site proximity",
+  "confidence": "medium",
+  "issues": [
+   "23 of 50 wards are zero"
+  ]
+ },
+ {
+  "metric_id": "metrics_submitted_count",
+  "label": "Metrics Submitted",
+  "confidence": "unrated",
+  "issues": [
+   "39 of 50 wards are zero"
+  ]
+ },
+ {
+  "metric_id": "colleges_count",
+  "label": "Colleges & Universities",
+  "confidence": "high",
+  "issues": [
+   "33 of 50 wards are zero"
+  ]
+ },
+ {
+  "metric_id": "trade_schools_count",
+  "label": "Trade & Vocational Schools",
+  "confidence": "high",
+  "issues": [
+   "38 of 50 wards are zero"
+  ]
+ },
+ {
+  "metric_id": "purpleair_sensors_per_10000_residents",
+  "label": "Citizen Air Sensors",
+  "confidence": "high",
+  "issues": [
+   "23 of 50 wards are zero"
+  ]
+ },
+ {
+  "metric_id": "summer_night_air_temp_c",
+  "label": "Summer Night Air Temperature",
+  "confidence": "high",
+  "issues": [
+   "only 35 wards"
+  ]
+ },
+ {
+  "metric_id": "summer_day_sensor_temp_c",
+  "label": "Summer Afternoon Sensor Temperature",
+  "confidence": "low",
+  "issues": [
+   "only 33 wards"
+  ]
+ },
+ {
+  "metric_id": "summer_night_humidity_pct",
+  "label": "Summer Night Humidity",
+  "confidence": "high",
+  "issues": [
+   "only 35 wards"
+  ]
+ },
+ {
+  "metric_id": "pm25_sensor_annual_ugm3",
+  "label": "Fine Particles (citizen sensors)",
+  "confidence": "medium",
+  "issues": [
+   "only 32 wards"
+  ]
+ },
+ {
+  "metric_id": "cta_l_station_entries",
+  "label": "'L' ridership",
+  "confidence": "high",
+  "issues": [
+   "only 36 wards",
+   "latest period is the current year to date (partial); use 2025 for a full year"
+  ]
+ },
+ {
+  "metric_id": "divvy_rides_count",
+  "label": "Divvy rides",
+  "confidence": "high",
+  "issues": [
+   "latest period is the current year to date (partial); use 2025 for a full year"
+  ]
+ },
+ {
+  "metric_id": "real_estate_sales_usd",
+  "label": "Real-estate sales",
+  "confidence": "medium",
+  "issues": [
+   "latest period is the current year to date (partial); use 2025 for a full year"
+  ]
+ },
+ {
+  "metric_id": "designated_landmarks_count",
+  "label": "Official landmarks",
+  "confidence": "high",
+  "issues": [
+   "only 43 wards"
+  ]
+ },
+ {
+  "metric_id": "nrhp_listings_count",
+  "label": "National Register listings",
+  "confidence": "high",
+  "issues": [
+   "only 41 wards"
+  ]
+ },
+ {
+  "metric_id": "c311_service_graffiti_days",
+  "label": "Graffiti removal (service)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_week_graffiti_pct",
+  "label": "Graffiti removal within a week",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_repeats_graffiti",
+  "label": "Graffiti removal repeat reports",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_service_tree_debris_days",
+  "label": "Tree debris cleanup (service)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_week_tree_debris_pct",
+  "label": "Tree debris cleanup within a week",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_repeats_tree_debris",
+  "label": "Tree debris cleanup repeat reports",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_service_rodent_days",
+  "label": "Rodent baiting (service)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_week_rodent_pct",
+  "label": "Rodent baiting within a week",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_repeats_rodent",
+  "label": "Rodent baiting repeat reports",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_service_street_light_days",
+  "label": "Street light repair (service)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_week_street_light_pct",
+  "label": "Street light repair within a week",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_repeats_street_light",
+  "label": "Street light repair repeat reports",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_service_pothole_days",
+  "label": "Pothole repair (service)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_week_pothole_pct",
+  "label": "Pothole repair within a week",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_repeats_pothole",
+  "label": "Pothole repair repeat reports",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_service_garbage_cart_days",
+  "label": "Garbage cart service (service)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_week_garbage_cart_pct",
+  "label": "Garbage cart service within a week",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_repeats_garbage_cart",
+  "label": "Garbage cart service repeat reports",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_service_abandoned_vehicle_days",
+  "label": "Abandoned vehicle removal (service)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_week_abandoned_vehicle_pct",
+  "label": "Abandoned vehicle removal within a week",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_repeats_abandoned_vehicle",
+  "label": "Abandoned vehicle removal repeat reports",
+  "confidence": "unrated",
+  "issues": [
+   "all zeros",
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_service_traffic_signal_days",
+  "label": "Traffic signal repair (service)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_week_traffic_signal_pct",
+  "label": "Traffic signal repair within a week",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_repeats_traffic_signal",
+  "label": "Traffic signal repair repeat reports",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_service_sanitation_days",
+  "label": "Sanitation code violations (service)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_week_sanitation_pct",
+  "label": "Sanitation code violations within a week",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_repeats_sanitation",
+  "label": "Sanitation code violations repeat reports",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_service_fly_dumping_days",
+  "label": "Fly dumping cleanup (service)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_week_fly_dumping_pct",
+  "label": "Fly dumping cleanup within a week",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_repeats_fly_dumping",
+  "label": "Fly dumping cleanup repeat reports",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_service_missed_pickup_days",
+  "label": "Missed garbage pickup (service)",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_week_missed_pickup_pct",
+  "label": "Missed garbage pickup within a week",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_repeats_missed_pickup",
+  "label": "Missed garbage pickup repeat reports",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_service_response_days",
+  "label": "Service response time",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_closed_week_pct",
+  "label": "Services closed within a week",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ },
+ {
+  "metric_id": "c311_repeat_reports",
+  "label": "Repeat reports per service",
+  "confidence": "unrated",
+  "issues": [
+   "311 data runs to 29 Sep 2026 (partial year)"
+  ]
+ }
+]

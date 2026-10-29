@@ -1,0 +1,365 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ward Wise Short</title>
+<style>
+  :root {
+    --ink: #1d1d1f; --ink-2: #6e6e73; --ink-3: #86868b;
+    --blue: #0071e3; --navy: #0a2f66; --stage: #f5f5f7;
+    --r0: #e3eefc; --r1: #b7d3f7; --r2: #7fb1ee; --r3: #3f86e0; --r4: #0a5cc2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #fff; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; position: relative; }
+  .abs { position: absolute; will-change: transform, opacity; }
+  /* A slot holds text that rolls: the old lines rise out and the new lines rise in, each line masked. */
+  .slot { position: absolute; }
+  .slot .layer { position: absolute; left: 0; top: 0; width: 100%; }
+  .ln { overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+  .li { will-change: transform, opacity; white-space: nowrap; }
+  #title { left: 120px; top: 290px; width: 770px; height: 190px; font-size: 84px; line-height: 88px; font-weight: 700; letter-spacing: -0.035em; }
+  #title .b { color: var(--blue); }
+  #sub { left: 120px; top: 482px; width: 770px; height: 48px; font-size: 36px; line-height: 40px; font-weight: 500; color: var(--ink-2); letter-spacing: -0.01em; }
+  .legend { display: flex; align-items: center; gap: 16px; }
+  .legend .ramp { display: flex; border-radius: 8px; overflow: hidden; }
+  .legend .ramp i { width: 44px; height: 24px; display: block; }
+  #stage { left: 120px; top: 546px; width: 746px; height: 746px; border-radius: 28px; background: var(--stage); overflow: hidden; }
+  #stage svg { width: 746px; height: 746px; display: block; }
+  .ward { stroke: #fff; stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+  #card { left: 120px; top: 1300px; width: 770px; height: 140px; border-radius: 28px; background: #fff; box-shadow: 0 8px 32px rgba(0,0,0,.10); border: 1px solid #e5e5ea; display: flex; align-items: center; padding: 0 32px; gap: 28px; }
+  #card .badge { width: 84px; height: 84px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 44px; font-weight: 700; letter-spacing: -0.02em; flex: none; position: relative; overflow: hidden; }
+  #badge-slot { left: 0; top: 0; width: 84px; height: 84px; line-height: 84px; text-align: center; }
+  #card .who { flex: 1; min-width: 0; position: relative; height: 92px; }
+  #name-slot { left: 0; top: 0; width: 100%; height: 52px; font-size: 48px; line-height: 52px; font-weight: 700; letter-spacing: -0.02em; }
+  #hood-slot { left: 0; top: 54px; width: 100%; height: 38px; font-size: 32px; line-height: 38px; font-weight: 500; color: var(--ink-2); }
+  #hood-slot .li { overflow: hidden; text-overflow: ellipsis; }
+  #card .num { text-align: right; flex: none; }
+  #card .n { font-size: 96px; line-height: 84px; font-weight: 700; letter-spacing: -0.04em; color: var(--blue); font-variant-numeric: tabular-nums; }
+  #card .n.wide { font-size: 76px; }
+  #card .unit { font-size: 30px; font-weight: 500; color: var(--ink-3); margin-top: 2px; }
+  #median { left: 148px; top: 1222px; font-size: 34px; font-weight: 600; color: var(--r4); background: var(--r0); border-radius: 999px; padding: 10px 24px; }
+  #worst { left: 120px; top: 1170px; width: 770px; border-radius: 28px; background: var(--ink); color: #fff; padding: 26px 32px; }
+  #worst .row { display: flex; align-items: baseline; justify-content: space-between; height: 58px; }
+  #worst .row b { font-size: 44px; font-weight: 700; letter-spacing: -0.02em; }
+  #worst .row span { font-size: 32px; color: #a1a1a6; font-weight: 500; margin-left: 16px; }
+  #worst .row em { font-style: normal; font-size: 52px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
+  .tag { font-size: 30px; font-weight: 700; color: var(--ink); background: #fff; border-radius: 12px; padding: 4px 12px; white-space: nowrap; }
+  #end { left: 120px; top: 0; width: 770px; height: 1920px; }
+  #end > * { position: absolute; left: 0; width: 100%; display: flex; justify-content: center; }
+  #end .lock { top: 396px; align-items: center; gap: 20px; font-size: 64px; font-weight: 700; letter-spacing: -0.03em; }
+  #end .lock svg { width: 88px; height: 88px; }
+  #end .cta { top: 1050px; font-size: 76px; font-weight: 700; letter-spacing: -0.035em; }
+  #end .cta2 { top: 1146px; font-size: 40px; font-weight: 500; color: var(--ink-2); }
+  #end .pill span { font-size: 48px; font-weight: 600; color: #fff; background: var(--blue); border-radius: 999px; padding: 14px 44px; }
+  #end .pill { top: 1230px; }
+  #end .src { top: 1352px; font-size: 32px; font-weight: 500; color: var(--ink-3); }
+</style>
+</head>
+<body>
+  <div id="title" class="slot"></div>
+  <div id="sub" class="slot"></div>
+  <div id="stage" class="abs"><svg id="map" viewBox="0 0 746 746"><g id="cam"><g id="wards"></g><g id="hi"></g></g></svg></div>
+  <div id="tags"></div>
+  <div id="median" class="abs"></div>
+  <div id="card" class="abs">
+    <div class="badge"><div id="badge-slot" class="slot"></div></div>
+    <div class="who"><div id="name-slot" class="slot"></div><div id="hood-slot" class="slot"></div></div>
+    <div class="num"><div class="n" id="num"></div><div class="unit" id="unit"></div></div>
+  </div>
+  <div id="worst" class="abs"></div>
+  <div id="end" class="abs">
+    <div class="lock"><svg viewBox="0 0 64 64"><path d="M10 50 L26 34 L36 42 L54 18" fill="none" stroke="#0071e3" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="54" cy="18" r="6" fill="#1c2433"/></svg>Ward Wise</div>
+    <div class="cta" id="cta"></div>
+    <div class="cta2" id="cta2"></div>
+    <div class="pill"><span>wardwise.org</span></div>
+    <div class="src" id="src"></div>
+  </div>
+<script>
+const DATA = __DATA__;
+const W = DATA.wards;
+const EP = DATA.episode;
+const ids = Object.keys(W).sort();
+const $ = id => document.getElementById(id);
+// Format a value the way the episode asks (prefix, suffix, decimals, thousands commas).
+const fmt = v => (EP.prefix || '') + Number(v).toLocaleString('en-US', { minimumFractionDigits: EP.decimals || 0, maximumFractionDigits: EP.decimals || 0 }) + (EP.suffix || '');
+const goodness = id => EP.direction === 'higher' ? -W[id].value : W[id].value; // lower = better ranks first
+$('median').textContent = EP.median_text;
+$('unit').textContent = EP.unit;
+$('cta').textContent = EP.cta || 'Find your ward';
+$('cta2').textContent = EP.cta2 || 'Comment your ward number';
+$('src').textContent = EP.source || '';
+const RAMP = ['#e3eefc', '#b7d3f7', '#7fb1ee', '#3f86e0', '#0a5cc2'];
+const ACTIVE = '#0071e3', INK = '#1d1d1f';
+const sorted = ids.slice().sort((a, b) => goodness(a) - goodness(b));
+const bucket = {};
+sorted.forEach((id, i) => { bucket[id] = 4 - Math.floor(i / 10); });
+
+// Easing. One family: cubic/quint for moves, no overshoot or bounce.
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const prog = (t, a, d) => clamp((t - a) / d);
+const outCubic = x => 1 - Math.pow(1 - x, 3);
+const outQuint = x => 1 - Math.pow(1 - x, 5);
+const inOut = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const lerp = (a, b, x) => a + (b - a) * x;
+const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+const mix = (h1, h2, x) => { const a = hex(h1), b = hex(h2); return 'rgb(' + a.map((v, i) => Math.round(v + (b[i] - v) * x)).join(',') + ')'; };
+const toHex = rgb => '#' + rgb.match(/\d+/g).map(n => (+n).toString(16).padStart(2, '0')).join('');
+function set(e, op, ty = 0, sc = 1) { e.style.opacity = op; e.style.transform = `translateY(${ty}px) scale(${sc})`; }
+
+// Timeline. Without a voiceover it is locked to the song: one bar = 4 beats, each reveal lands on a downbeat.
+// With a voiceover (EP.voice_timing, written by make_video.sh) the reveals land on the spoken cue words instead.
+const VT = EP.voiceover && EP.voice_timing && EP.voice_timing.cues;
+const CUES = VT && ['rank5', 'rank4', 'rank3', 'rank2', 'rank1', 'worst', 'end'].every(k => k in VT) ? VT : null;
+const MIN_GAP = 0.85; // reveals closer than this are pushed apart
+const BPM = (EP.music && EP.music.bpm) || 96;
+const BEAT = 60 / BPM, BAR = 4 * BEAT;
+const T = n => n * BAR;
+const T_WORST = CUES ? CUES.worst : T(7), T_END = CUES ? CUES.end : T(8);
+const DUR = CUES ? EP.voice_timing.voice_end + 2.0 : T(8) + 3.0;
+// EP.best is listed #1 first; the video counts down from #5, one bar each, starting at bar 2.
+const RANKS = EP.best.slice(0, 5).map((b, i) => ({ id: b.id, rank: i + 1, hood: b.hood, z: b.zoom || (i === 0 ? 2.0 : 1.7) })).reverse()
+  .map((r, i) => ({ ...r, t: CUES ? CUES['rank' + r.rank] : T(2 + i) }));
+if (CUES) RANKS.forEach((r, i) => { if (i) r.t = Math.max(r.t, RANKS[i - 1].t + MIN_GAP); });
+// How roomy each reveal is: 1 on the bar grid (2.5 s apart), smaller when the voice reads the names quickly.
+// Flights and the lift of the active ward shrink with it so they finish before the next reveal.
+RANKS.forEach((r, i) => {
+  const next = i < 4 ? RANKS[i + 1].t : T_WORST;
+  r.gap = next - r.t;
+  r.k = CUES ? clamp(r.gap / T(1), 0.45, 1) : 1;
+});
+const T_FIRST = RANKS[0].t;
+const T_LEGEND = CUES ? Math.min(T(1), T_FIRST * 0.5) : T(1);
+
+// Rolling text slots.
+function makeSlot(el) { el.innerHTML = '<div class="layer"></div><div class="layer"></div>'; const [a, b] = el.children; return { a, b, ah: null, bh: null }; }
+function fill(layer, html, key, slot) {
+  if (slot[key] === html) return;
+  slot[key] = html;
+  layer.innerHTML = (html || '').split('<br>').map(l => `<div class="ln"><div class="li">${l}</div></div>`).join('');
+}
+// sched: [{t, html, instant}], sorted by t.
+// Ticker mode (one-line slots): old and new move together, the new line right behind the old one.
+// Swap mode (multi-line slots): old lines lift out fast, then the new lines rise in, so lines never crowd.
+function roll(slot, sched, t, D = 0.65, stagger = 0.06, ticker = false) {
+  let i = -1;
+  for (let k = 0; k < sched.length; k++) if (sched[k].t <= t) i = k;
+  const cur = i >= 0 ? sched[i] : { html: '', instant: true }, prev = i > 0 ? sched[i - 1] : null;
+  const OUT = ticker ? D : 0.22, DELAY = ticker ? 0 : 0.2;
+  const pin = k => cur.instant ? 1 : (ticker ? inOut : outQuint)(prog(t, cur.t + DELAY + k * stagger, ticker ? D : D - DELAY));
+  const pout = k => cur.instant ? 1 : (ticker ? inOut : inOut)(prog(t, cur.t + k * stagger * 0.5, OUT));
+  fill(slot.a, cur.html, 'ah', slot);
+  [...slot.a.querySelectorAll('.li')].forEach((li, k) => {
+    li.style.transform = `translateY(${(1 - pin(k)) * (ticker ? 110 : 100)}%)`;
+    li.style.opacity = ticker ? clamp(pin(k) * 1.4) : outCubic(clamp(pin(k) * 1.3));
+  });
+  const done = cur.instant || !prev || pout(3) >= 1;
+  fill(slot.b, done ? '' : prev.html, 'bh', slot);
+  [...slot.b.querySelectorAll('.li')].forEach((li, k) => {
+    li.style.transform = `translateY(${-pout(k) * (ticker ? 110 : 14)}%)`;
+    li.style.opacity = ticker ? clamp((1 - pout(k)) * 1.4) : 1 - pout(k);
+  });
+}
+const legendHtml = `<div class="legend"><span>${EP.legend_dark}</span><span class="ramp">${[4, 3, 2, 1, 0].map(k => `<i style="background:${RAMP[k]}"></i>`).join('')}</span><span>${EP.legend_light}</span></div>`;
+const S_TITLE = makeSlot($('title')), S_SUB = makeSlot($('sub'));
+const SCH_TITLE = [
+  { t: 0, html: EP.title_html, instant: true },
+  { t: T_FIRST - 0.45, html: EP.best_title_html },
+  { t: T_WORST - 0.45, html: EP.worst_title_html },
+  { t: T_END - 0.25, html: '' },
+];
+const SCH_SUB = [
+  { t: 0, html: EP.sub, instant: true },
+  { t: T_LEGEND, html: legendHtml },
+  { t: T_FIRST - 0.45, html: '' },
+  { t: T_WORST - 0.2, html: EP.worst_sub },
+  { t: T_END - 0.25, html: '' },
+];
+const S_BADGE = makeSlot($('badge-slot')), S_NAME = makeSlot($('name-slot')), S_HOOD = makeSlot($('hood-slot'));
+const LAND = -0.28; // card text is mid-roll on the downbeat and settles just after it
+const SCH_BADGE = RANKS.map((r, i) => ({ t: r.t + LAND, html: `#${r.rank}`, instant: i === 0 }));
+const SCH_NAME = RANKS.map((r, i) => ({ t: r.t + LAND, html: `Ward ${+r.id}`, instant: i === 0 }));
+const SCH_HOOD = RANKS.map((r, i) => ({ t: r.t + LAND, html: r.hood, instant: i === 0 }));
+
+// Map.
+const SW = 746, SX = 120, SY = 546, H2 = SW / 2;
+const S0 = (SW - 70) / DATA.height;
+const svgNS = 'http://www.w3.org/2000/svg';
+const gW = $('wards'), gH = $('hi');
+const el = {};
+for (const id of ids) {
+  const p = document.createElementNS(svgNS, 'path');
+  p.setAttribute('d', W[id].d); p.setAttribute('class', 'ward'); p.setAttribute('fill', RAMP[bucket[id]]);
+  gW.appendChild(p);
+  const bb = p.getBBox();
+  el[id] = { p, bb, ny: (bb.y + bb.height / 2) / DATA.height };
+}
+// Lifted copy of the active ward, drawn on top with a soft shadow.
+const halo = document.createElementNS(svgNS, 'path'); halo.setAttribute('fill', 'none'); halo.setAttribute('stroke', '#fff'); halo.setAttribute('stroke-width', 9); halo.setAttribute('vector-effect', 'non-scaling-stroke'); halo.setAttribute('stroke-linejoin', 'round');
+const act = document.createElementNS(svgNS, 'path'); act.setAttribute('fill', ACTIVE); act.setAttribute('stroke', '#0a2f66'); act.setAttribute('stroke-width', 4); act.setAttribute('vector-effect', 'non-scaling-stroke'); act.setAttribute('stroke-linejoin', 'round');
+gH.appendChild(halo); gH.appendChild(act);
+
+// Camera. A shot is a center in map units plus a zoom. Moves between shots follow the
+// van Wijk and Nuij smooth zoom path (the curve web maps use for "fly to"): the camera eases out a
+// little on longer hops and back in, so it never jumps. During a hold the camera keeps a slow push-in.
+const FULL = { cx: DATA.width / 2, cy: DATA.height / 2, z: 1 };
+function camFor(id, zmax) {
+  const b = el[id].bb;
+  const fit = Math.min((SW - 200) / (b.width * S0), (SW - 200) / (b.height * S0));
+  return { cx: b.x + b.width / 2, cy: b.y + b.height / 2, z: Math.min(zmax, fit) };
+}
+const WORST = EP.worst.slice(0, 3).map(w => ({ ...w }));
+const DOWNTOWN = (() => {
+  let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+  for (const id of WORST.map(w => w.id)) { const b = el[id].bb; x0 = Math.min(x0, b.x); y0 = Math.min(y0, b.y); x1 = Math.max(x1, b.x + b.width); y1 = Math.max(y1, b.y + b.height); }
+  return { cx: (x0 + x1) / 2, cy: (y0 + y1) / 2 + 12, z: Math.min((SW - 200) / ((x1 - x0) * S0), 2.4) };
+})();
+RANKS.forEach(r => r.cam = camFor(r.id, r.z));
+const DRIFT = 0.035; // push-in over a hold
+// Flights: [start, end, target]. Each reveal's flight ends a little after its downbeat.
+const FLIGHTS = [
+  ...RANKS.map(r => ({ a: r.t - 0.8 * r.k, b: r.t + 0.35 * r.k, to: r.cam })),
+  { a: T_WORST - 0.7, b: T_WORST + 0.9, to: DOWNTOWN },
+  { a: T_END - 0.15, b: T_END + 0.95, to: FULL },
+];
+function fly(a, b, x) {
+  const rho = 1.25, r2 = rho * rho;
+  const w0 = SW / (S0 * a.z), w1 = SW / (S0 * b.z);
+  const dx = b.cx - a.cx, dy = b.cy - a.cy, u1 = Math.hypot(dx, dy);
+  if (u1 < 1e-3) return { cx: lerp(a.cx, b.cx, x), cy: lerp(a.cy, b.cy, x), z: Math.exp(lerp(Math.log(a.z), Math.log(b.z), x)) };
+  const b0 = (w1 * w1 - w0 * w0 + r2 * r2 * u1 * u1) / (2 * w0 * r2 * u1);
+  const b1 = (w1 * w1 - w0 * w0 - r2 * r2 * u1 * u1) / (2 * w1 * r2 * u1);
+  const R0 = Math.log(Math.sqrt(b0 * b0 + 1) - b0), R1 = Math.log(Math.sqrt(b1 * b1 + 1) - b1);
+  const s = x * (R1 - R0) / rho;
+  const u = w0 / r2 * (Math.cosh(R0) * Math.tanh(rho * s + R0) - Math.sinh(R0));
+  const w = w0 * Math.cosh(R0) / Math.cosh(rho * s + R0);
+  return { cx: a.cx + dx * u / u1, cy: a.cy + dy * u / u1, z: SW / (S0 * w) };
+}
+// Where the camera sits at time t, with drift applied during holds.
+function camAt(t) {
+  let from = FULL, holdStart = 0;
+  for (const f of FLIGHTS) {
+    if (t < f.a) break;
+    const start = { ...from, z: from.z * (1 + DRIFT * outCubic(prog(f.a, holdStart, f.a - holdStart || 1))) };
+    if (t < f.b) return fly(start, f.to, inOut(prog(t, f.a, f.b - f.a)));
+    from = f.to; holdStart = f.b;
+  }
+  const holdLen = (FLIGHTS.find(f => f.a > t) || { a: DUR }).a - holdStart;
+  return { ...from, z: from.z * (1 + DRIFT * outCubic(prog(t, holdStart, holdLen || 1))) };
+}
+function toScreen(c, mx, my) { const s = S0 * c.z; return { x: SX + H2 + (mx - c.cx) * s, y: SY + H2 + (my - c.cy) * s }; }
+
+// Worst panel and tags.
+const worstEl = $('worst');
+worstEl.innerHTML = `<div style="font-size:30px;color:#a1a1a6;font-weight:600;margin-bottom:8px">${EP.worst_header}</div>` +
+  WORST.map(w => `<div class="row"><div><b>Ward ${+w.id}</b><span>${w.hood}</span></div><em>${fmt(W[w.id].value)}</em></div>`).join('');
+const rowsEl = [...worstEl.querySelectorAll('.row')];
+const ROW_T = k => T_WORST + 0.25 + k * BEAT / 2; // rows land on eighth notes
+const tagsEl = $('tags');
+for (const w of WORST) { const t = document.createElement('div'); t.className = 'tag abs'; t.textContent = +w.id; tagsEl.appendChild(t); w.tag = t; }
+
+window.renderAt = function (t) {
+  roll(S_TITLE, SCH_TITLE, t);
+  roll(S_SUB, SCH_SUB, t, 0.55);
+
+  // Map fill: a wave sweeps north to south across the first bar.
+  const dimP = inOut(prog(t, T_FIRST - 0.9, 0.7)) * (1 - inOut(prog(t, T_END - 0.1, 0.7)));
+  const revealedAt = id => { const r = RANKS.find(r => r.id === id); return r ? r.t : null; };
+  const nextAfter = id => { const i = RANKS.findIndex(r => r.id === id); return i < 4 ? RANKS[i + 1].t : T_WORST; };
+  ids.forEach(id => {
+    const e = el[id];
+    const wave = outCubic(prog(t, 0.05 + e.ny * 0.9, 0.7));
+    let fillC = mix(RAMP[0], RAMP[bucket[id]], 0.3 + 0.7 * wave);
+    let op = lerp(1, 0.42, dimP);
+    const rt = revealedAt(id);
+    if (rt !== null && t >= rt - 0.25 && t < T_WORST + 0.2) {
+      // Active: bright blue. After the next reveal: settles to the darkest ramp blue and stays lit.
+      const on = inOut(prog(t, rt - 0.25, 0.4)), settle = inOut(prog(t, nextAfter(id) - 0.4, 0.5));
+      fillC = mix(toHex(mix(toHex(fillC), ACTIVE, on)), RAMP[4], settle);
+      op = lerp(op, 1, on) ;
+      const back = inOut(prog(t, T_WORST - 0.5, 0.6));
+      fillC = mix(toHex(fillC), RAMP[bucket[id]], back); op = lerp(op, lerp(1, 0.42, dimP), back);
+    }
+    const k = WORST.findIndex(w => w.id === id);
+    if (k >= 0) {
+      const ink = inOut(prog(t, ROW_T(k) - 0.05, 0.35)) * (1 - inOut(prog(t, T_END - 0.1, 0.6)));
+      fillC = mix(toHex(fillC), INK, ink); op = lerp(op, 1, ink);
+    }
+    e.p.setAttribute('fill', fillC);
+    e.p.style.opacity = op;
+  });
+
+  // Lifted active ward: rises as the camera arrives, settles as the next flight starts.
+  let active = null;
+  for (const r of RANKS) if (t >= r.t - 0.3) active = r;
+  if (active && t < T_WORST) {
+    const nx = active.rank === 1 ? null : RANKS[RANKS.indexOf(active) + 1];
+    const end = nx ? nx.t - 0.8 * nx.k : T_WORST - 0.7, ak = active.k;
+    const k = inOut(prog(t, active.t - 0.3 * ak, 0.55 * ak)) * (1 - inOut(prog(t, end, 0.35 * ak)));
+    act.setAttribute('d', W[active.id].d); halo.setAttribute('d', W[active.id].d);
+    act.style.opacity = k; halo.style.opacity = k;
+    const b = el[active.id].bb, cx = b.x + b.width / 2, cy = b.y + b.height / 2, s = 1 + 0.025 * k;
+    const tr = `translate(${cx},${cy - 3 * k}) scale(${s}) translate(${-cx},${-cy})`;
+    act.setAttribute('transform', tr); halo.setAttribute('transform', tr);
+    act.style.filter = `drop-shadow(0 ${8 * k}px ${12 * k}px rgba(10,47,102,${0.3 * k}))`;
+  } else { act.style.opacity = 0; halo.style.opacity = 0; }
+
+  const c = camAt(t);
+  $('cam').setAttribute('transform', `translate(${H2},${H2}) scale(${S0 * c.z}) translate(${-c.cx},${-c.cy})`);
+
+  // One card for the whole countdown. Text rolls; the number glides from the last ward's value.
+  const card = $('card');
+  const cIn = outQuint(prog(t, T_FIRST - 0.3, 0.7)), cOut = inOut(prog(t, T_WORST - 0.6, 0.35));
+  card.style.display = cIn > 0 && cOut < 1 ? 'flex' : 'none';
+  set(card, clamp(prog(t, T_FIRST - 0.3, 0.35)) * (1 - cOut), 50 * (1 - cIn) + 40 * cOut);
+  roll(S_BADGE, SCH_BADGE, t, 0.5, 0, true);
+  roll(S_NAME, SCH_NAME, t, 0.55, 0, true);
+  roll(S_HOOD, SCH_HOOD, t, 0.55, 0.04, true);
+  let ri = 0;
+  RANKS.forEach((r, i) => { if (t >= r.t + LAND) ri = i; });
+  const vNow = W[RANKS[ri].id].value, vPrev = ri > 0 ? W[RANKS[ri - 1].id].value : vNow;
+  const np = inOut(prog(t, RANKS[ri].t + LAND, 0.55));
+  const v = lerp(vPrev, vNow, np);
+  const nEl = $('num');
+  nEl.textContent = fmt(EP.decimals ? +v.toFixed(EP.decimals) : Math.round(v));
+  nEl.classList.toggle('wide', fmt(vNow).length > 4);
+
+  const med = $('median');
+  const mT = CUES ? Math.min(RANKS[4].t + BEAT * 2, T_WORST - 1.6) : RANKS[4].t + BEAT * 2;
+  const mIn = outQuint(prog(t, mT, 0.6));
+  set(med, clamp(prog(t, mT, 0.3)) * (1 - cOut), 18 * (1 - mIn));
+
+  // Worst three.
+  const wIn = outQuint(prog(t, T_WORST - 0.3, 0.7)), wOut = inOut(prog(t, T_END - 0.2, 0.4));
+  worstEl.style.display = wIn > 0 && wOut < 1 ? 'block' : 'none';
+  set(worstEl, clamp(prog(t, T_WORST - 0.3, 0.35)) * (1 - wOut), 60 * (1 - wIn) + 30 * wOut);
+  rowsEl.forEach((row, k) => { const p = outQuint(prog(t, ROW_T(k), 0.5)); set(row, clamp(prog(t, ROW_T(k), 0.25)), 20 * (1 - p)); });
+  WORST.forEach((w, k) => {
+    const p = prog(t, ROW_T(k) + 0.1, 0.45);
+    const vis = p > 0 && t < T_END + 0.3;
+    w.tag.style.display = vis ? 'block' : 'none';
+    if (!vis) return;
+    const b = el[w.id].bb, s = toScreen(c, b.x + b.width / 2, b.y + b.height / 2);
+    w.tag.style.left = s.x + 'px'; w.tag.style.top = s.y + 'px';
+    w.tag.style.opacity = clamp(p * 2) * (1 - prog(t, T_END - 0.2, 0.3));
+    w.tag.style.transform = `translate(-50%,-50%) scale(${0.85 + 0.15 * outQuint(p)})`;
+  });
+
+  // End card: the map shrinks up behind the logo while the lines rise in on eighth notes.
+  const stage = $('stage');
+  const e = inOut(prog(t, T_END - 0.15, 1.1));
+  stage.style.transform = `translateY(${lerp(0, -105, e)}px) scale(${lerp(1, 0.5, e)})`;
+  stage.style.transformOrigin = '50% 50%';
+  stage.style.background = `rgba(245,245,247,${1 - e})`;
+  const end = $('end');
+  end.style.display = t >= T_END ? 'block' : 'none';
+  [...end.children].forEach((ch, k) => {
+    const st = T_END + 0.15 + k * BEAT / 2;
+    set(ch, clamp(prog(t, st, 0.3)), 30 * (1 - outQuint(prog(t, st, 0.7))));
+  });
+};
+window.DUR = DUR;
+window.renderAt(0);
+</script>
+</body>
+</html>

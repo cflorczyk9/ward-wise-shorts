@@ -1,0 +1,80 @@
+{
+  "metric_id": "pedestrian_cyclist_crashes_count",
+  "year": 2025,
+  "direction": "lower",
+  "unit": "crashes",
+  "prefix": "",
+  "suffix": "",
+  "decimals": 0,
+  "title_html": "Fewest walkers and<br>bikers <span class=\"b\">hit by cars</span>",
+  "sub": "Chicago Police crash reports, 2025",
+  "legend_dark": "Fewer crashes",
+  "legend_light": "More",
+  "best_title_html": "The 5 wards with<br><span class=\"b\">the fewest</span> crashes",
+  "worst_title_html": "And the wards<br>with <span class=\"b\">the most</span>",
+  "worst_sub": "More people walk downtown, so more get hit",
+  "worst_header": "MOST CRASHES IN 2025",
+  "source": "Data from Chicago Police crash reports",
+  "cta": "Is your ward on the list?",
+  "cta2": "Link in bio",
+  "music": {
+    "file": "music/just-keep-walking.mp3",
+    "start": 41.84,
+    "bpm": 96
+  },
+  "best": [
+    {
+      "id": "10",
+      "hood": "South Deering, Hegewisch",
+      "zoom": 2.0
+    },
+    {
+      "id": "18",
+      "hood": "Ashburn",
+      "zoom": 1.7
+    },
+    {
+      "id": "41",
+      "hood": "Norwood Park, Edison Park",
+      "zoom": 1.4
+    },
+    {
+      "id": "38",
+      "hood": "Dunning, Portage Park",
+      "zoom": 1.7
+    },
+    {
+      "id": "12",
+      "hood": "Brighton Park",
+      "zoom": 1.7
+    }
+  ],
+  "worst": [
+    {
+      "id": "27",
+      "hood": "Near West Side, West Town"
+    },
+    {
+      "id": "42",
+      "hood": "Loop, Near North Side"
+    },
+    {
+      "id": "28",
+      "hood": "Near West Side, Garfield Park"
+    }
+  ],
+  "voiceover": {
+    "voice": "af_heart",
+    "speed": 1.0,
+    "script": "Here's some good news for a few Chicago neighborhoods. In 2025, Brighton Park, Portage Park, Norwood Park and Ashburn had some of the fewest walkers and bikers hit by cars. Hegewisch had the fewest of anyone. Downtown had the most, since that's where people walk. Is your ward on the list? Check the link in our bio.",
+    "cues": {
+      "rank5": "Brighton",
+      "rank4": "Portage",
+      "rank3": "Norwood",
+      "rank2": "Ashburn",
+      "rank1": "Hegewisch",
+      "worst": "Downtown",
+      "end": "Is"
+    }
+  }
+}
