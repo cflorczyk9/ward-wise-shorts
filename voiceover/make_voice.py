@@ -22,7 +22,6 @@ for r in pipe(vo["script"], voice=vo.get("voice", "af_heart"), speed=vo.get("spe
 audio = np.concatenate(audio)
 loud = np.where(np.abs(audio) > 0.01)[0]
 audio = audio[: loud[-1] + 2400]  # trim the silence Kokoro leaves at the end
-sf.write(f"{out_dir}/voice.wav", np.concatenate([np.zeros(int(LEAD * SR), dtype=np.float32), audio]), SR)
 
 cues, pos = {}, 0
 for name, word in vo["cues"].items():  # cues are in speaking order; each search starts after the last hit
@@ -30,6 +29,21 @@ for name, word in vo["cues"].items():  # cues are in speaking order; each search
     i = next((k for k in range(pos, len(words)) if words[k][0] == want), None)
     if i is None:
         sys.exit(f"Cue '{name}': word '{word}' not found in the script after the previous cue.")
-    cues[name] = round(LEAD + words[i][1], 3); pos = i + 1
+    cues[name] = words[i][1]; pos = i + 1
+
+# Stretch the pause before any cue that comes less than min_gap after the one before it, so each reveal stays up long enough to read.
+# The silence goes in just before the cue word, inside the pause the voice already takes there, so the take itself is untouched.
+MIN_GAP = vo.get("min_gap", 1.5)
+names, shift, pieces, cut = list(cues), 0.0, [], 0
+for a, b in zip(names, names[1:]):
+    cues[a] += shift
+    need = MIN_GAP - (cues[b] + shift - cues[a])
+    if need > 0:
+        at = int((cues[b] - 0.05) * SR)
+        pieces += [audio[cut:at], np.zeros(int(need * SR), dtype=np.float32)]; cut = at; shift += need
+cues[names[-1]] += shift
+audio = np.concatenate(pieces + [audio[cut:]])
+cues = {k: round(LEAD + v, 3) for k, v in cues.items()}
+sf.write(f"{out_dir}/voice.wav", np.concatenate([np.zeros(int(LEAD * SR), dtype=np.float32), audio]), SR)
 json.dump({"cues": cues, "voice_end": round(LEAD + len(audio) / SR, 3)}, open(f"{out_dir}/voice_cues.json", "w"), indent=1)
 print("cues:", cues, "voice_end:", round(LEAD + len(audio) / SR, 2))

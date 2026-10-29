@@ -66,7 +66,7 @@
   "voiceover": {
     "voice": "af_heart",
     "speed": 1.0,
-    "script": "Here's some good news for a few Chicago neighborhoods. In 2025, Brighton Park, Portage Park, Norwood Park and Ashburn had some of the fewest walkers and bikers hit by cars. Hegewisch had the fewest of anyone. Downtown had the most, since that's where people walk. Is your ward on the list? Check the link in our bio.",
+    "script": "Okay Chicago, here's some good news. These are the wards where the fewest people walking or biking got hit by cars last year. Brighton Park. Portage Park. Norwood Park. Ashburn. And the fewest of all? [Hegewisch](/hˈɛʤwɪʃ/), way down on the Southeast Side. Downtown had the most, because that's where everybody walks. Is your ward on the list? Check the link in our bio.",
     "cues": {
       "rank5": "Brighton",
       "rank4": "Portage",

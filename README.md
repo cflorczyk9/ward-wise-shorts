@@ -42,7 +42,7 @@ The build prints the top 5 and bottom 3 with their values. Check them before you
 
 ## The voiceover
 
-DRAFT: the script for episode 1 is a draft. Connor is still choosing the final words.
+Local names can be spelled out for the voice in the script, like `[Hegewisch](/hˈɛʤwɪʃ/)`. The bracket shows the word and the slashes hold how to say it.
 
 The episode file has a `voiceover` block: the voice, the speed, the whole script as one paragraph, and `cues`. Each cue names a moment on screen (`rank5` down to `rank1`, `worst`, `end`) and gives the first word of the phrase where that moment should land.
 
